@@ -1,0 +1,227 @@
+.footer {
+  background-color: #000;
+  color: #000000;
+  padding: -30px 0;
+  text-align: center;
+  height: 200px;
+}
+.footer-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.f-logo {
+  color: white;
+  display: flex;
+  position: relative;
+  right: 590px;
+  font-size: 44px;
+  font-weight: bold;
+  bottom: 75px;
+}
+
+.socials {
+  display: inline-flex;
+  list-style: none;
+  height: 120px;
+  width: 100%;
+  padding-top: 40px;
+  overflow: hidden;
+  font-family: "Poppins", sans-serif;
+  justify-content: center;
+}
+
+.socials .icon {
+  position: relative;
+  background: #ffffff;
+  border-radius: 50%;
+  margin: 10px;
+  width: 50px;
+  height: 50px;
+  font-size: 18px;
+  z-index: 999999;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  box-shadow: 0 10px 10px rgba(0, 0, 0, 0.1);
+  cursor: pointer;
+  transition: all 0.2s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+}
+
+.socials .tooltip {
+  position: absolute;
+  top: 0;
+  font-size: 14px;
+  background: #fff;
+  color: #fff;
+  padding: 5px 8px;
+  border-radius: 5px;
+  box-shadow: 0 10px 10px rgba(0, 0, 0, 0.1);
+  opacity: 0;
+  pointer-events: none;
+  transition: all 0.3s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+}
+
+.socials .tooltip::before {
+  position: absolute;
+  content: "";
+  height: 8px;
+  width: 8px;
+  background: #fff;
+  bottom: -3px;
+  left: 50%;
+  transform: translate(-50%) rotate(45deg);
+  transition: all 0.3s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+}
+
+.socials .icon:hover .tooltip {
+  top: -45px;
+  opacity: 1;
+  visibility: visible;
+  pointer-events: auto;
+}
+
+.socials .icon:hover span,
+.socials .icon:hover .tooltip {
+  text-shadow: 0px -1px 0px rgba(0, 0, 0, 0.1);
+}
+
+.socials .facebook:hover,
+.socials .facebook:hover .tooltip,
+.socials .facebook:hover .tooltip::before {
+  background: #1877f2;
+  color: #fff;
+}
+
+.socials .twitter:hover,
+.socials .twitter:hover .tooltip,
+.socials .twitter:hover .tooltip::before {
+  background: #1da1f2;
+  color: #fff;
+}
+
+.socials .instagram:hover,
+.socials .instagram:hover .tooltip,
+.socials .instagram:hover .tooltip::before {
+  background: #e4405f;
+  color: #fff;
+}
+
+.copyright {
+  font-size: 14px;
+  position: relative;
+  right: 575px;
+  bottom: 160px;
+  color: #ccc;
+}
+.footer-container {
+  height: 200px;
+}
+.footer-newsletter {
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  height: fit-content;
+}
+
+.footer-newsletter input {
+  border-radius: 0.9em;
+  height: 45px;
+  width: 350px;
+  border: none;
+  position: relative;
+  top: 30px;
+  left: 40px;
+  padding: 10px;
+  z-index: 999;
+}
+.newsletter-form button {
+  position: relative;
+  background-color: #000;
+  color: white;
+  height: 80%;
+  width: 90px;
+  right: 60px;
+  border-radius: 0.9em;
+  cursor: pointer;
+  top: 30px;
+  border: none;
+  z-index: 9999;
+}
+.newsletter-form button:hover {
+  background-color: white;
+  /* opacity: 0.5; */
+  color: black;
+  box-shadow: 0px 5px 5px rgb(101, 101, 101);
+}
+.footer-newsletter h3,
+.footer-newsletter p {
+  color: white;
+  position: relative;
+  top: 20px;
+}
+.b-button {
+  display: flex;
+  position: relative;
+  justify-content: flex-end;
+  height: fit-content;
+  right: 10px;
+  top: 20px;
+}
+.back-button {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  background-color: rgb(20, 20, 20);
+  border: none;
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0px 0px 0px 4px rgba(35, 34, 39, 0.253);
+  cursor: pointer;
+  transition-duration: 0.3s;
+  overflow: hidden;
+  position: relative;
+}
+
+.svgIcon {
+  width: 12px;
+  transition-duration: 0.3s;
+}
+
+.svgIcon path {
+  fill: white;
+}
+
+.back-button:hover {
+  width: 140px;
+  border-radius: 50px;
+  transition-duration: 0.3s;
+  background-color: rgb(0, 0, 0);
+  align-items: center;
+}
+
+.back-button:hover .svgIcon {
+  /* width: 20px; */
+  transition-duration: 0.3s;
+  transform: translateY(-200%);
+}
+
+.back-button::before {
+  position: absolute;
+  bottom: -20px;
+  content: "Back to Top";
+  color: white;
+  /* transition-duration: .3s; */
+  font-size: 0px;
+}
+
+.back-button:hover::before {
+  font-size: 13px;
+  opacity: 1;
+  bottom: unset;
+  /* transform: translateY(-30px); */
+  transition-duration: 0.3s;
+}

@@ -1,0 +1,9 @@
+.slogan {
+  font-family: "ICA Rubrik";
+  font-size: 1em;
+  color: #000000;
+  position: relative;
+  bottom: 420px;
+  left: 40px;
+  z-index: 999999999999;
+}
