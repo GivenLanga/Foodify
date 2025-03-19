@@ -1,5 +1,5 @@
 # Foodify
-Project Link: https://poetic-pika-e24a4e.netlify.app
+Project Link: https://inquisitive-marigold-51b604.netlify.app/
 Foodify is a web application that allows users to explore and search for recipes. The application features a navigation bar, a banner, a slogan section, user reviews, and a footer. Users can search for recipes using the search bar or explore all recipes using the "Explore Recipes" button.
 
 ## Features
