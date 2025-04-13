@@ -1,23 +1,34 @@
 import React from "react";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import Navbar from "./componets/navbar/Navbar";
+import Favorites from "./componets/pages/favorites/Favorites";
 import Banner from "./componets/banner/Banner";
-import Slogan from "./componets/slogan/Slogan";
-import Review from "./componets/reviewss/Review";
-import Footer from "./componets/footer/Footer";
-import SearchMeals from "./componets/pages/search/Search"; // Adjust the path if necessary
-
+/*
+import Slogan from "./components/slogan/Slogan";
+import Review from "./components/review-s/Review";
+import Footer from "./components/footer/Footer";
+import SearchMeals from "./components/pages/search/Search";
+ */
 function App() {
   return (
     <Router>
       <div className="App">
-        <Navbar />
-        <Banner />
+        <Routes>
+          {/* Main content components */}
+          {/*  
         <Slogan />
         <Review />
-        <Footer />
-        <Routes>
-          <Route path="/search" element={<SearchMeals />} />
+        <Footer /> */}
+          <Route
+            path="/"
+            element={
+              <>
+                <Navbar />
+                <Banner />
+              </>
+            }
+          />
+          <Route path="/Favorites" element={<Favorites />} />
         </Routes>
       </div>
     </Router>

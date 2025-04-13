@@ -1,3 +1,4 @@
+/* Footer container */
 .footer {
   background-color: #000;
   color: #000000;
@@ -5,11 +6,16 @@
   text-align: center;
   height: 200px;
 }
+
+/* Footer content container */
 .footer-container {
   display: flex;
   flex-direction: column;
   align-items: center;
+  height: 200px;
 }
+
+/* Footer logo */
 .f-logo {
   color: white;
   display: flex;
@@ -20,6 +26,7 @@
   bottom: 75px;
 }
 
+/* Social media icons container */
 .socials {
   display: inline-flex;
   list-style: none;
@@ -31,6 +38,7 @@
   justify-content: center;
 }
 
+/* Social media icon */
 .socials .icon {
   position: relative;
   background: #ffffff;
@@ -49,6 +57,7 @@
   transition: all 0.2s cubic-bezier(0.68, -0.55, 0.265, 1.55);
 }
 
+/* Tooltip for social media icon */
 .socials .tooltip {
   position: absolute;
   top: 0;
@@ -63,6 +72,7 @@
   transition: all 0.3s cubic-bezier(0.68, -0.55, 0.265, 1.55);
 }
 
+/* Tooltip arrow */
 .socials .tooltip::before {
   position: absolute;
   content: "";
@@ -75,6 +85,7 @@
   transition: all 0.3s cubic-bezier(0.68, -0.55, 0.265, 1.55);
 }
 
+/* Show tooltip on hover */
 .socials .icon:hover .tooltip {
   top: -45px;
   opacity: 1;
@@ -82,11 +93,13 @@
   pointer-events: auto;
 }
 
+/* Text shadow on hover */
 .socials .icon:hover span,
 .socials .icon:hover .tooltip {
   text-shadow: 0px -1px 0px rgba(0, 0, 0, 0.1);
 }
 
+/* Facebook icon hover effect */
 .socials .facebook:hover,
 .socials .facebook:hover .tooltip,
 .socials .facebook:hover .tooltip::before {
@@ -94,6 +107,7 @@
   color: #fff;
 }
 
+/* Twitter icon hover effect */
 .socials .twitter:hover,
 .socials .twitter:hover .tooltip,
 .socials .twitter:hover .tooltip::before {
@@ -101,6 +115,7 @@
   color: #fff;
 }
 
+/* Instagram icon hover effect */
 .socials .instagram:hover,
 .socials .instagram:hover .tooltip,
 .socials .instagram:hover .tooltip::before {
@@ -108,6 +123,7 @@
   color: #fff;
 }
 
+/* Copyright text */
 .copyright {
   font-size: 14px;
   position: relative;
@@ -115,9 +131,8 @@
   bottom: 160px;
   color: #ccc;
 }
-.footer-container {
-  height: 200px;
-}
+
+/* Newsletter form container */
 .footer-newsletter {
   display: flex;
   flex-direction: column;
@@ -125,6 +140,7 @@
   height: fit-content;
 }
 
+/* Newsletter input field */
 .footer-newsletter input {
   border-radius: 0.9em;
   height: 45px;
@@ -136,6 +152,8 @@
   padding: 10px;
   z-index: 999;
 }
+
+/* Newsletter form button */
 .newsletter-form button {
   position: relative;
   background-color: #000;
@@ -149,18 +167,24 @@
   border: none;
   z-index: 9999;
 }
+
+/* Newsletter form button hover effect */
 .newsletter-form button:hover {
   background-color: white;
   /* opacity: 0.5; */
   color: black;
   box-shadow: 0px 5px 5px rgb(101, 101, 101);
 }
+
+/* Newsletter form text */
 .footer-newsletter h3,
 .footer-newsletter p {
   color: white;
   position: relative;
   top: 20px;
 }
+
+/* Back to top button container */
 .b-button {
   display: flex;
   position: relative;
@@ -169,6 +193,8 @@
   right: 10px;
   top: 20px;
 }
+
+/* Back to top button */
 .back-button {
   width: 50px;
   height: 50px;
@@ -186,15 +212,18 @@
   position: relative;
 }
 
+/* SVG icon inside back to top button */
 .svgIcon {
   width: 12px;
   transition-duration: 0.3s;
 }
 
+/* SVG icon path */
 .svgIcon path {
   fill: white;
 }
 
+/* Back to top button hover effect */
 .back-button:hover {
   width: 140px;
   border-radius: 50px;
@@ -203,12 +232,14 @@
   align-items: center;
 }
 
+/* SVG icon hover effect */
 .back-button:hover .svgIcon {
   /* width: 20px; */
   transition-duration: 0.3s;
   transform: translateY(-200%);
 }
 
+/* Back to top button text */
 .back-button::before {
   position: absolute;
   bottom: -20px;
@@ -218,6 +249,7 @@
   font-size: 0px;
 }
 
+/* Back to top button text hover effect */
 .back-button:hover::before {
   font-size: 13px;
   opacity: 1;

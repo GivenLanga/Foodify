@@ -2,17 +2,18 @@ import { useState, useEffect } from "react";
 import "./searchmeal.css";
 
 const SearchMeals = () => {
-  const [query, setQuery] = useState("");
-  const [meals, setMeals] = useState([]);
-  const [selectedMeal, setSelectedMeal] = useState(null);
-  const [error, setError] = useState(null);
+  const [query, setQuery] = useState(""); // State for search query
+  const [meals, setMeals] = useState([]); // State for meals list
+  const [selectedMeal, setSelectedMeal] = useState(null); // State for selected meal details
+  const [error, setError] = useState(null); // State for error messages
 
   useEffect(() => {
+    // Get query parameter from URL
     const urlParams = new URLSearchParams(window.location.search);
     const searchQuery = urlParams.get("query");
     if (searchQuery) {
       setQuery(searchQuery);
-      fetchMealList(searchQuery);
+      fetchMealList(searchQuery); // Fetch meals based on query
     }
   }, []);
 
@@ -22,6 +23,7 @@ const SearchMeals = () => {
     setError(null);
 
     try {
+      // Fetch meals from API
       const response = await fetch(
         `https://www.themealdb.com/api/json/v1/1/filter.php?i=${query}`
       );
@@ -34,6 +36,7 @@ const SearchMeals = () => {
 
   const fetchMealRecipe = async (mealId) => {
     try {
+      // Fetch meal recipe details from API
       const response = await fetch(
         `https://www.themealdb.com/api/json/v1/1/lookup.php?i=${mealId}`
       );
@@ -46,6 +49,7 @@ const SearchMeals = () => {
 
   return (
     <div>
+      {/* Search box */}
       <div className="search-box">
         <input
           type="text"
@@ -58,6 +62,7 @@ const SearchMeals = () => {
           Search
         </button>
       </div>
+      {/* Meals list */}
       <div id="meal">
         {meals.length === 0 && !error && (
           <p className="loading">Loading meals...</p>
@@ -81,6 +86,7 @@ const SearchMeals = () => {
         ))}
       </div>
 
+      {/* Selected meal details */}
       {selectedMeal && (
         <div className="meal-details showRecipe">
           <div className="meal-details-content">

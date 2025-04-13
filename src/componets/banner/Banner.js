@@ -5,7 +5,9 @@ const Banner = () => {
   return (
     <div className="banner">
       <div className="page-content">
-        <h1 data-content="FOODIFY">FOODIFY</h1>
+        <h1 className="page-font" data-content="FOODIFY">
+          FOODIFY
+        </h1>
 
         <div className="center-img"></div>
       </div>

@@ -1,0 +1,9 @@
+{
+  "editor.hover.above": true,
+  "editor.hover.enabled": true,
+  "css.hover.documentation": false,
+  "css.hover.references": false,
+  "less.hover.references": false,
+  "scss.hover.documentation": false,
+  "scss.hover.references": false
+}
