@@ -15,6 +15,48 @@ body {
   line-height: 1.6;
   font-family: "Poppins", sans-serif;
 }
+nav {
+  display: flex;
+  justify-content: center;
+}
+.nav__link {
+  text-decoration: none;
+  color: inherit;
+}
+.search-box {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.home__icon {
+  margin-right: 20px;
+}
+
+.input__search {
+  flex: 1;
+  max-width: 500px;
+  padding: 10px;
+  font-family: "Courier New", Courier, monospace;
+  outline: none;
+  background: #e8e8e8;
+  box-shadow: 5px 5px 17px #c8c8c8, -5px -5px 17px #ffffff;
+  border: none;
+  border-radius: 10px;
+  transition: all 0.5s ease;
+}
+#search-btn,
+.search__icon {
+  margin-left: 10px;
+  border: none;
+  color: white;
+  background-color: inherit;
+  cursor: pointer;
+}
+
+.search__icon:hover {
+  scale: 1.1;
+}
 
 /*  */
 .btn {
@@ -70,29 +112,15 @@ body {
 .search-control::placeholder {
   color: var(--tenne-tawny);
 }
-.search-btn {
-  width: 55px;
-  height: 55px;
-  font-size: 1.8rem;
-  background: var(--tenne-tawny);
-  color: #fff;
-  border: none;
-  border-top-right-radius: 2rem;
-  border-bottom-right-radius: 2rem;
-  transition: all 0.4s linear;
-  -webkit-transition: all 0.4s linear;
-  -moz-transition: all 0.4s linear;
-  -ms-transition: all 0.4s linear;
-  -o-transition: all 0.4s linear;
-}
-.search-btn:hover {
-  background: var(--tenne-tawny-dark);
-}
+
 .meal-result {
   margin-top: 4rem;
 }
 #meal {
-  margin: 2.4rem 0;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr); /* Show 4 cards per row */
+  gap: 1rem; /* Reduced gap for better spacing */
+  margin: 2rem 0; /* Margin for spacing */
 }
 .meal-item {
   border-radius: 1rem;
@@ -109,34 +137,46 @@ body {
   display: block;
 }
 .meal-name {
-  padding: 1.5rem 0.5rem;
+  padding: 0.8rem 0.5rem; /* Reduced padding */
 }
 .meal-name h3 {
-  font-size: 1.4rem;
+  font-size: 1rem; /* Reduced font size */
 }
 .recipe-btn {
   text-decoration: none;
   color: #fff;
   background: var(--tenne-tawny);
   font-weight: 500;
-  font-size: 1.1rem;
-  padding: 0.75rem 0;
-  display: block;
-  width: 175px;
-  margin: 1rem auto;
+  font-size: 0.9rem; /* Font size for text */
+  padding: 0.5rem 0;
+  display: flex; /* Use flex to center the icon or text */
+  justify-content: center;
+  align-items: center;
+  width: 120px;
+  height: 40px; /* Set a fixed height for the button */
+  margin: 0.6rem auto;
   border-radius: 2rem;
-  -webkit-border-radius: 2rem;
-  -moz-border-radius: 2rem;
-  -ms-border-radius: 2rem;
-  -o-border-radius: 2rem;
   transition: all 0.4s linear;
-  -webkit-transition: all 0.4s linear;
-  -moz-transition: all 0.4s linear;
-  -ms-transition: all 0.4s linear;
-  -o-transition: all 0.4s linear;
+  cursor: pointer;
+  position: relative;
 }
+
 .recipe-btn:hover {
   background: var(--tenne-tawny-dark);
+}
+
+.recipe-btn:hover::before,
+.recipe-btn:hover::after {
+  content: none; /* Ensure no pseudo-elements are displayed */
+}
+
+.recipe-icon {
+  font-size: inherit; /* Inherit the font size of the button */
+  height: 100%; /* Ensure the icon fills the button height */
+  width: auto; /* Maintain aspect ratio */
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 /* meal details */
@@ -156,8 +196,8 @@ body {
   -moz-border-radius: 1rem;
   -ms-border-radius: 1rem;
   -o-border-radius: 1rem;
-  width: 90%;
-  height: 90%;
+  width: 80%;
+  height: 80%;
   overflow-y: scroll;
   display: none;
   padding: 2rem 0;
@@ -272,32 +312,34 @@ body {
   font-weight: 600;
   width: 100%;
 }
-#favorites-btn {
-  background: var(--tenne-tawny);
+.meal__btns {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.favorites-btn {
+  margin-left: 200px;
+  height: 45px;
+  width: 150px;
+  background-color: black;
   color: white;
-  padding: 0.75rem 1.5rem;
-  position: absolute;
-  bottom: 24em;
-  left: 36em;
-  border-radius: 2rem;
-  cursor: pointer;
+  border-radius: 1em;
 }
 
-#favorites-btn:hover {
-  background: var(--tenne-tawny-dark);
-}
 .hidden {
   display: none;
 }
-#favorites-section {
-  margin-top: 2rem;
-}
-.fav-btn {
-  margin-top: 0.5rem;
-}
+
 .remove-btn {
-  background-color: #ff4444;
+  background-color: #000000;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  padding: 5px 10px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
 }
+
 /* Media Queries */
 @media screen and (min-width: 600px) {
   .meal-search-box {
@@ -309,7 +351,6 @@ body {
 
 @media screen and (min-width: 768px) {
   #meal {
-    display: grid;
     grid-template-columns: repeat(2, 1fr);
     gap: 2rem;
   }
@@ -324,5 +365,103 @@ body {
 @media screen and (min-width: 992px) {
   #meal {
     grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+.meal-container {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 15px; /* Reduced gap between meal cards */
+  margin: 2rem 0; /* Slightly reduced margin */
+}
+
+.meal-card {
+  border: 1px solid #e6e6e6; /* Card border */
+  padding: 8px; /* Reduced padding inside the card */
+  border-radius: 8px; /* Rounded corners */
+  width: 100%; /* Allow cards to adjust width based on grid */
+  text-align: center; /* Center-align text */
+  box-shadow: 5px 5px 15px rgb(113, 113, 113), -5px -5px 15px rgb(197, 195, 195); /* Adjusted shadow for smaller cards */
+  transition: transform 0.3s; /* Smooth hover effect */
+  overflow: hidden; /* Prevent overflow */
+}
+
+.meal-card:hover {
+  transform: scale(1.05); /* Slight zoom effect on hover */
+}
+
+.meal-img img {
+  width: 100%; /* Ensure the image takes up the full width of the card */
+  height: 250px; /* Set a fixed height for images */
+  object-fit: cover; /* Ensure images are cropped proportionally */
+  display: block; /* Prevent inline spacing issues */
+  border-radius: 8px; /* Match the card's border radius */
+}
+
+.meal-name {
+  padding: 0.8rem 0.5rem; /* Reduced padding */
+}
+
+.meal-name h3 {
+  font-size: 1rem; /* Reduced font size */
+}
+
+.recipe-btn {
+  text-decoration: none;
+  color: #fff;
+  background: var(--tenne-tawny);
+  font-weight: 500;
+  font-size: 0.9rem; /* Font size for text */
+  padding: 0.5rem 0;
+  display: flex; /* Use flex to center the icon or text */
+  justify-content: center;
+  align-items: center;
+  width: 120px;
+  height: 40px; /* Set a fixed height for the button */
+  margin: 0.6rem auto;
+  border-radius: 2rem;
+  transition: all 0.4s linear;
+  cursor: pointer;
+  position: relative;
+}
+
+.recipe-btn:hover {
+  background: var(--tenne-tawny-dark);
+}
+
+.recipe-btn:hover::before,
+.recipe-btn:hover::after {
+  content: none; /* Ensure no pseudo-elements are displayed */
+}
+
+.recipe-icon {
+  font-size: inherit; /* Inherit the font size of the button */
+  height: 100%; /* Ensure the icon fills the button height */
+  width: auto; /* Maintain aspect ratio */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Responsive Adjustments */
+@media screen and (max-width: 1200px) {
+  #meal {
+    grid-template-columns: repeat(3, 1fr); /* Keep 4 cards per row on laptops */
+  }
+}
+
+@media screen and (max-width: 768px) {
+  #meal {
+    grid-template-columns: repeat(
+      2,
+      1fr
+    ); /* Show 2 cards per row on small screens */
+  }
+}
+
+@media screen and (max-width: 480px) {
+  #meal {
+    grid-template-columns: 1fr; /* Show 1 card per row on very small screens */
   }
 }

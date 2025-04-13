@@ -40,6 +40,7 @@ nav {
 }
 
 .search-area > .search-btn {
+  flex: 0.1;
   margin-left: 10px; /* Spacing between input and button */
   flex-shrink: 0; /* Keep button at fixed size */
   cursor: pointer;
@@ -51,7 +52,7 @@ nav {
   scale: 1.1;
 }
 .button {
-  height: 50px;
+  width: 200px;
   flex-shrink: 0; /* Prevent it from shrinking */
   padding: 0.5rem 1rem; /* Reduce padding to save space */
   --black-700: hsla(0 0% 12% / 1);

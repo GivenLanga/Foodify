@@ -1,4 +1,14 @@
 import { useState, useEffect } from "react";
+import { Link } from "react-router-dom";
+import FavoriteBorderIcon from "@mui/icons-material/FavoriteBorder";
+import { useDispatch, useSelector } from "react-redux";
+import {
+  addFavorite,
+  removeFavorite,
+} from "../../../redux/slices/favoritesSlice";
+import SearchIcon from "@mui/icons-material/Search";
+import RestaurantMenuIcon from "@mui/icons-material/RestaurantMenu"; // Import Material-UI icon
+import HomeIcon from "@mui/icons-material/Home"; // Import Home icon from Material-UI
 import "./searchmeal.css";
 
 const SearchMeals = () => {
@@ -6,6 +16,9 @@ const SearchMeals = () => {
   const [meals, setMeals] = useState([]); // State for meals list
   const [selectedMeal, setSelectedMeal] = useState(null); // State for selected meal details
   const [error, setError] = useState(null); // State for error messages
+  const [hoveredButton, setHoveredButton] = useState(null); // State to track hovered button
+  const dispatch = useDispatch(); // Redux dispatch
+  const favorites = useSelector((state) => state.favorites); // Get favorites from Redux
 
   useEffect(() => {
     // Get query parameter from URL
@@ -47,40 +60,90 @@ const SearchMeals = () => {
     }
   };
 
+  const handleAddToFavorites = (meal) => {
+    dispatch(addFavorite(meal)); // Dispatch the addFavorite action
+  };
+
+  const handleRemoveFromFavorites = (meal) => {
+    dispatch(removeFavorite(meal)); // Dispatch the removeFavorite action
+  };
+
+  const isFavorite = (mealId) => {
+    return favorites.some((meal) => meal.idMeal === mealId); // Check if the meal is in favorites
+  };
+
   return (
     <div>
       {/* Search box */}
-      <div className="search-box">
-        <input
-          type="text"
-          id="search-input"
-          value={query}
-          onChange={(e) => setQuery(e.target.value)}
-          placeholder="Search for recipes..."
-        />
-        <button id="search-btn" onClick={() => fetchMealList(query)}>
-          Search
-        </button>
-      </div>
+      <nav>
+        <div className="search-box">
+          <Link className="nav__link" to={"/"}>
+            <HomeIcon className="home__icon" />
+          </Link>
+          <input
+            className="input__search"
+            type="text"
+            id="search-input"
+            value={query}
+            onChange={(e) => setQuery(e.target.value)}
+            placeholder="Search for recipes..."
+          />
+          <button id="search-btn" onClick={() => fetchMealList(query)}>
+            <SearchIcon className="search__icon" />
+          </button>
+
+          <Link className="nav__link" to="/favorites">
+            <FavoriteBorderIcon />
+          </Link>
+        </div>
+      </nav>
+
       {/* Meals list */}
-      <div id="meal">
+      <div id="meal" className="meal-container">
         {meals.length === 0 && !error && (
           <p className="loading">Loading meals...</p>
         )}
         {error && <p className="error-message">{error}</p>}
         {meals.map((meal) => (
-          <div key={meal.idMeal} className="meal-item" data-id={meal.idMeal}>
+          <div
+            key={meal.idMeal}
+            className="meal-item meal-card"
+            data-id={meal.idMeal}
+          >
             <div className="meal-img">
               <img src={meal.strMealThumb} alt="food" />
             </div>
             <div className="meal-name">
               <h3>{meal.strMeal}</h3>
-              <button
-                className="recipe-btn"
-                onClick={() => fetchMealRecipe(meal.idMeal)}
-              >
-                Get Recipe
-              </button>
+              <div className="meal__btns">
+                <button
+                  className="recipe-btn"
+                  onMouseEnter={() => setHoveredButton(meal.idMeal)} // Set hovered button ID
+                  onMouseLeave={() => setHoveredButton(null)} // Reset hovered button ID
+                  onClick={() => fetchMealRecipe(meal.idMeal)}
+                >
+                  {hoveredButton === meal.idMeal ? (
+                    <RestaurantMenuIcon /> // Show icon when hovered
+                  ) : (
+                    "Get Recipe" // Show text when not hovered
+                  )}
+                </button>
+                {isFavorite(meal.idMeal) ? (
+                  <button
+                    className="favorites-btn remove-btn"
+                    onClick={() => handleRemoveFromFavorites(meal)}
+                  >
+                    Remove from Favorites
+                  </button>
+                ) : (
+                  <button
+                    className="favorites-btn"
+                    onClick={() => handleAddToFavorites(meal)}
+                  >
+                    Add to Favorites
+                  </button>
+                )}
+              </div>
             </div>
           </div>
         ))}

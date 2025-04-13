@@ -13,7 +13,7 @@
 
 .review-section {
   text-align: center;
-  background: #ffffff;
+  background-color: #e8e8e8;
   color: #000;
   padding: 40px 20px;
 }
@@ -32,14 +32,15 @@
 }
 
 .review-card {
-  background: hsl(0, 0%, 97%);
-  border: 1px solid #000;
+  border: 1px solid #e6e6e6;
   padding: 15px;
   border-radius: 8px;
   width: 300px;
   text-align: center;
   box-shadow: 3px 3px 0 #000;
   transition: transform 0.3s;
+  box-shadow: 15px 15px 30px rgb(113, 113, 113),
+    -15px -15px 30px rgb(197, 195, 195);
 }
 
 .review-card:hover {

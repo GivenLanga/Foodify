@@ -1,5 +1,5 @@
 .banner {
-  width: 100hv;
+  width: 100vw;
   height: 100vh;
   text-align: center;
   position: relative;
@@ -21,12 +21,12 @@
 
 .banner .page-content h1 {
   font-family: "ICA Rubrik";
-  font-size: 256px;
+  font-size: 270px;
   line-height: 1em;
   color: #000000;
   position: absolute;
   bottom: 240px;
-  left: 20px;
+  left: -35px;
 }
 .banner .page-content h1::after {
   position: absolute;

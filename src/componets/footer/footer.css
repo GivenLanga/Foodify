@@ -20,14 +20,15 @@
   color: white;
   display: flex;
   position: relative;
-  right: 590px;
+  right: 640px;
   font-size: 44px;
   font-weight: bold;
-  bottom: 75px;
+  bottom: 45px;
 }
 
 /* Social media icons container */
 .socials {
+  margin-top: 25px;
   display: inline-flex;
   list-style: none;
   height: 120px;
@@ -127,7 +128,7 @@
 .copyright {
   font-size: 14px;
   position: relative;
-  right: 575px;
+  right: 650px;
   bottom: 160px;
   color: #ccc;
 }
