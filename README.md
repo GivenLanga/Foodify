@@ -1,5 +1,10 @@
-# Foodify 
+# Foodify
+
 Project Link https://inquisitive-marigold-51b604.netlify.app/
+
+# About the API
+
+The Api used has limited search options and some ingreidents are written in a foreign language, for demontration purposes search for common ingredients such as eggs, chicken or beef.
 
 Foodify is a web application that allows users to explore and search for recipes. The application features a navigation bar, a banner, a slogan section, user reviews, and a footer. Users can search for recipes using the search bar or explore all recipes using the "Explore Recipes" button.
 

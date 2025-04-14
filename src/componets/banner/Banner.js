@@ -12,11 +12,7 @@ const Banner = () => {
         <div className="center-img"></div>
       </div>
       <div className="card-container">
-        <a
-          href="https://www.mythrillfiction.com/the-dark-rider"
-          alt="Mythrill"
-          target="_blank"
-        >
+        <a href="noreferrer" alt="Mythrill" target="_blank">
           <div className="card">
             <div className="wrapper">
               <img
@@ -31,11 +27,7 @@ const Banner = () => {
             />
           </div>
         </a>
-        <a
-          href="https://www.mythrillfiction.com/the-dark-rider"
-          alt="Mythrill"
-          target="_blank"
-        >
+        <a href="noreferrer" alt="Mythrill" target="_blank">
           <div className="card">
             <div className="wrapper">
               <img
@@ -50,11 +42,7 @@ const Banner = () => {
             />
           </div>
         </a>
-        <a
-          href="https://www.mythrillfiction.com/the-dark-rider"
-          alt="Mythrill"
-          target="_blank"
-        >
+        <a href="noreferrer" alt="Mythrill" target="_blank">
           <div className="card">
             <div className="wrapper">
               <img
@@ -69,11 +57,7 @@ const Banner = () => {
             />
           </div>
         </a>
-        <a
-          href="https://www.mythrillfiction.com/force-mage"
-          alt="Mythrill"
-          target="_blank"
-        >
+        <a href="noreferrer" alt="Mythrill" target="_blank">
           <div className="card">
             <div className="wrapper">
               <img

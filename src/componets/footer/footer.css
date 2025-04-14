@@ -20,10 +20,18 @@
   color: white;
   display: flex;
   position: relative;
-  right: 640px;
+  right: 650px;
   font-size: 44px;
   font-weight: bold;
-  bottom: 45px;
+  bottom: 70px;
+}
+/* Copyright text */
+.copyright {
+  font-size: 14px;
+  position: relative;
+  right: 630px;
+  bottom: 160px;
+  color: #ccc;
 }
 
 /* Social media icons container */
@@ -122,15 +130,6 @@
 .socials .instagram:hover .tooltip::before {
   background: #e4405f;
   color: #fff;
-}
-
-/* Copyright text */
-.copyright {
-  font-size: 14px;
-  position: relative;
-  right: 650px;
-  bottom: 160px;
-  color: #ccc;
 }
 
 /* Newsletter form container */
