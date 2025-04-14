@@ -9,7 +9,7 @@ const Review = () => {
         <div class="review-card">
           <img
             src="./Assets/pexels-1831380664-29877967.jpg"
-            alt="User Image"
+            alt=""
             class="user-img"
           />
           <div class="review-content">
@@ -21,7 +21,7 @@ const Review = () => {
             </p>
             <img
               src="./Assets/8b36edb7e514ed6d00608d8cfe113bbe.jpg"
-              alt="Reviewed Food"
+              alt=""
               class="review-food"
             />
           </div>
@@ -30,7 +30,7 @@ const Review = () => {
         <div class="review-card">
           <img
             src="./Assets/pexels-emad-hussien-830139385-27856326.jpg"
-            alt="User Image"
+            alt=""
             class="user-img"
           />
           <div class="review-content">
@@ -42,7 +42,7 @@ const Review = () => {
             </p>
             <img
               src="./Assets/20 Cod Recipes That Will Make You Say _Holy Fish!_.jpeg"
-              alt="Reviewed Food"
+              alt=""
               class="review-food"
             />
           </div>
@@ -51,7 +51,7 @@ const Review = () => {
         <div class="review-card">
           <img
             src="./Assets/pexels-gonzalo-mendiola-95842233-18667111.jpg"
-            alt="User Image"
+            alt=""
             class="user-img"
           />
           <div class="review-content">
@@ -63,7 +63,7 @@ const Review = () => {
             </p>
             <img
               src="./Assets/20 Brunch Recipes That Will Make You The Ultimate Weekend Host.jpeg"
-              alt="Reviewed Food"
+              alt=""
               class="review-food"
             />
           </div>

@@ -32,7 +32,7 @@ const Navbar = () => {
     <nav id="home">
       <div className="logo-area">
         <div className="btn-explore">
-          <Link to="/search" id="btn-explore" className="button">
+          <Link to="/search?query=chicken" id="btn-explore" className="button">
             <div className="dots_border"></div>
             <svg
               xmlns="http://www.w3.org/2000/svg"
