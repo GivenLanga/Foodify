@@ -1,0 +1,107 @@
+::-webkit-scrollbar {
+  display: none;
+}
+
+.diets {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 200px;
+}
+.diets__p {
+  position: relative;
+  font-family: "Poppins";
+  font-size: 1.6rem;
+  color: #000;
+  position: relative;
+  top: 100px;
+  text-align: center;
+}
+.diets__text {
+  font-family: "ICA Rubrik";
+  text-align: center;
+  font-size: 3.5rem;
+  font-weight: bold;
+  color: #000;
+  position: relative;
+  top: 110px;
+}
+
+.diets__p {
+  position: relative;
+}
+.diets > .card {
+  position: relative;
+  top: 150px;
+  width: 70%;
+  height: 450px;
+  border-radius: 4px;
+  background: inherit;
+  display: flex;
+  gap: 5px;
+  padding: 0.4em;
+}
+
+/* Each diet card */
+.card p {
+  position: relative;
+  flex: 1;
+  height: 100%;
+  margin: 0;
+  overflow: hidden;
+  cursor: pointer;
+  background: inherit;
+  border: 1px solid#000000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: flex 0.5s;
+}
+
+/* Expand card on hover */
+.card p:hover {
+  flex: 4;
+}
+
+/* Diet name styling */
+.diet-name {
+  min-width: 14em;
+  padding: 0.5em;
+  text-align: center;
+  text-transform: uppercase;
+  color: #000000;
+  letter-spacing: 0.1em;
+  /* initial state for fade-up animation if needed */
+  opacity: 1;
+  transition: opacity 0.3s ease;
+  rotate: -90deg;
+}
+
+/* Description styling for full overlay */
+.description {
+  height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  padding: 1em;
+  overflow-y: auto;
+  background: #212121; /* Consistent background */
+  color: #fff;
+  font-size: 0.9rem;
+  text-align: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  transform: translateY(20px);
+  /* Smoother transition: longer duration, shorter delay, and ease-in-out easing */
+  transition: opacity 0.7s ease-in-out 0.2s, transform 0.7s ease-in-out 0.2s;
+}
+
+.card p:hover .description {
+  opacity: 1;
+  transform: translateY(0);
+}

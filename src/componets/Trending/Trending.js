@@ -52,6 +52,7 @@ function Trending() {
     <div className="tranding">
       <div className="tranding__deco">
         <h1 className="tranding__text">Trending Recipes</h1>
+
         <span class="chef">
           <svg
             xmlns="http://www.w3.org/2000/svg"
@@ -66,7 +67,9 @@ function Trending() {
           </svg>
         </span>
       </div>
-
+      <p className="trending__p">
+        Your curiosity writes the trends. Here's what's stealing the spotlight!
+      </p>
       {recipes.length > 0 ? (
         <div className="recipe-cards-container">
           {currentRecipes.map((recipe, index) => (

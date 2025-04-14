@@ -8,6 +8,7 @@ import Review from "./componets/review-s/Review";
 import Footer from "./componets/footer/Footer";
 import Trending from "./componets/Trending/Trending";
 import SearchMeals from "./componets/pages/search/Search";
+import Diets from "./componets/Diets/Diets";
 /*
 
 ";
@@ -29,6 +30,7 @@ function App() {
                 <Banner />
                 <Slogan />
                 <Trending />
+                <Diets />
                 <Review />
                 <Footer />
               </>

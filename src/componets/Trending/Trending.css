@@ -7,6 +7,15 @@
   justify-content: center;
   align-items: center;
 }
+
+.trending__p {
+  font-family: "Poppins";
+  font-size: 1.6rem;
+  color: #000;
+  position: relative;
+  bottom: 30px;
+  text-align: center;
+}
 .chef {
   margin-bottom: 40px;
   padding-left: 10px;
