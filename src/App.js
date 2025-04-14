@@ -6,6 +6,7 @@ import Banner from "./componets/banner/Banner";
 import Slogan from "./componets/slogan/Slogan";
 import Review from "./componets/review-s/Review";
 import Footer from "./componets/footer/Footer";
+import Tranding from "./componets/Tranding/Tranding";
 import SearchMeals from "./componets/pages/search/Search";
 /*
 
@@ -27,6 +28,7 @@ function App() {
                 <Navbar />
                 <Banner />
                 <Slogan />
+                <Tranding />
                 <Review />
                 <Footer />
               </>

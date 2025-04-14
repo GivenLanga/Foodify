@@ -1,0 +1,160 @@
+.tranding {
+  position: relative;
+  text-align: center;
+}
+.tranding__deco {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.chef {
+  margin-bottom: 40px;
+  padding-left: 10px;
+}
+.tranding__text {
+  font-family: "ICA Rubrik";
+  bottom: 20px;
+  text-align: center;
+  font-size: 3.5rem;
+  font-weight: bold;
+  color: #000;
+  position: relative;
+}
+
+.recipe-cards-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px;
+  justify-content: center;
+}
+.recipe-card {
+  position: relative; /* Make the card a positioned container for the close button */
+  display: inline-block;
+  text-align: center;
+  border: 1px solid #ddd;
+  border-radius: 10px;
+  padding: 20px;
+  background-color: #fff;
+  box-shadow: 15px 15px 30px rgb(113, 113, 113),
+    -15px -15px 30px rgb(197, 195, 195);
+  margin-bottom: 20px;
+  cursor: pointer;
+  transition: transform 0.3s;
+}
+.recipe-card:hover {
+  transform: scale(1.02);
+  z-index: 99;
+}
+.recipe-card img {
+  width: 100%;
+  max-width: 300px;
+  border-radius: 10px;
+  margin-bottom: 10px;
+}
+
+.recipe-card h2 {
+  font-size: 1.5rem;
+  margin-bottom: 10px;
+}
+
+.recipe-card p {
+  font-size: 1rem;
+  color: #555;
+}
+
+.get-recipe-btn {
+  padding: 10px 20px;
+  background-color: #000000;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.get-recipe-btn:hover {
+  background-color: #3f4040;
+}
+
+.recipe-details {
+  position: fixed; /* Make it appear in front of other content */
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 1000; /* Ensure it appears above other elements */
+  text-align: left;
+  width: 90%;
+  max-width: 600px; /* Set a maximum width */
+  max-height: 80vh; /* Increase the max-height for better responsiveness */
+  overflow-y: auto; /* Enable vertical scrolling if content overflows */
+  padding: 20px;
+  border: 1px solid #ddd;
+  border-radius: 10px;
+  background-color: #fff;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+}
+
+.recipe-details img {
+  width: 100%;
+  max-width: 300px;
+  border-radius: 10px;
+  margin-bottom: 10px;
+}
+
+.recipe-details h2 {
+  font-size: 1.5rem;
+  margin-bottom: 10px;
+}
+
+.recipe-details p {
+  font-size: 1rem;
+  color: #555;
+}
+
+.recipe-video-link {
+  display: inline-block;
+  margin-top: 10px;
+  padding: 10px 20px;
+  background-color: #ff5722;
+  color: white;
+  text-decoration: none;
+  border-radius: 5px;
+  transition: background-color 0.3s ease;
+}
+
+.recipe-video-link:hover {
+  background-color: #e64a19;
+}
+
+.overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5); /* Semi-transparent background */
+  z-index: 999; /* Ensure it appears below the recipe-details */
+}
+
+.close-btn {
+  position: absolute; /* Position the button relative to the card */
+  top: 10px; /* Adjust the distance from the top */
+  right: 10px; /* Adjust the distance from the right */
+  background-color: #ff5722;
+  color: white;
+  border: none;
+  border-radius: 40px;
+  width: 60px;
+  height: 30px;
+  font-size: 16px;
+  font-weight: bold;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background-color 0.3s ease;
+}
+
+.close-btn:hover {
+  background-color: #e64a19;
+}
