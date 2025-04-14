@@ -1,6 +1,6 @@
 # Foodify
 
-Project Link https://inquisitive-marigold-51b604.netlify.app/
+Project Link: https://foodifymeals.netlify.app/
 
 # About the API
 
