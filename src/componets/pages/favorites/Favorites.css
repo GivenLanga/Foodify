@@ -5,7 +5,7 @@
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
 
-.favorites-title {
+.favorites-container .favorites-title {
   font-size: 2rem;
   font-weight: bold;
   color: #333; /* Dark text for readability */
@@ -13,62 +13,74 @@
   text-align: center;
 }
 
-.no-favorites {
+.favorites-container .no-favorites {
   font-size: 1.2rem;
   color: #666; /* Subtle text color */
   text-align: center;
   margin-top: 20px;
 }
 
-.recipe-cards-container {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-  gap: 20px;
+.favorites-container .recipe-cards-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px;
+  justify-content: center;
 }
 
-.recipe-card {
-  background-color: #fff;
+.favorites-container .recipe-card {
+  position: relative; /* Make the card a positioned container for the close button */
+  display: inline-block;
+  text-align: center;
   border: 1px solid #ddd;
-  border-radius: 8px;
-  overflow: hidden;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  border-radius: 8px; /* Reduced border radius for a cleaner look */
+  padding: 15px; /* Reduced padding */
+  background-color: #fff;
+  box-shadow: 10px 10px 20px rgb(113, 113, 113),
+    -10px -10px 20px rgb(197, 195, 195); /* Reduced shadow size */
+  margin-bottom: 15px; /* Reduced margin */
+  cursor: pointer;
+  transition: transform 0.3s;
+  width: 220px; /* Set a fixed width for consistency */
+  height: auto; /* Allow height to adjust dynamically */
 }
 
-.recipe-card:hover {
+.favorites-container .recipe-card:hover {
   transform: translateY(-5px);
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
 }
 
-.recipe-image {
+.favorites-container .recipe-image {
   width: 100%;
-  height: 150px;
-  object-fit: cover;
+  max-width: 200px; /* Reduced max width */
+  height: 120px; /* Set a fixed height for consistency */
+  object-fit: cover; /* Ensure the image fits within the dimensions */
+  border-radius: 8px; /* Match the card's border radius */
+  margin-bottom: 8px; /* Reduced margin */
 }
 
-.recipe-card h3 {
-  font-size: 1.5rem;
+.favorites-container .recipe-card h3 {
+  font-size: 1.2rem; /* Reduced font size */
   color: #333;
-  margin: 10px;
+  margin: 8px 0; /* Reduced margin */
   text-align: center;
 }
 
-.get-recipe-btn {
+.favorites-container .get-recipe-btn {
   display: block;
-  width: 90%;
-  margin: 10px auto;
-  padding: 10px 15px;
-  font-size: 1rem;
+  width: 80%; /* Reduced button width */
+  margin: 8px auto; /* Reduced margin */
+  padding: 8px 12px; /* Reduced padding */
+  font-size: 0.9rem; /* Reduced font size */
   font-weight: bold;
   color: #fff;
-  background-color: #ff6b6b; /* Vibrant red for the button */
+  background-color: #000000; /* Button color */
   border: none;
-  border-radius: 4px;
+  border-radius: 20px; /* Reduced border radius */
   cursor: pointer;
   text-align: center;
   transition: background-color 0.2s ease;
 }
 
-.get-recipe-btn:hover {
-  background-color: #e63946; /* Darker red on hover */
+.favorites-container .get-recipe-btn:hover {
+  background-color: #a1a1a1; /* Hover color */
 }
