@@ -13,19 +13,28 @@ const Favorites = () => {
 
   return (
     <div className="favorites-container">
-      <h2>Your Favorite Recipes</h2>
+      <h2 className="favorites-title">Your Favorite Recipes</h2>
       {favorites.length === 0 ? (
-        <p>No favorite recipes yet.</p>
+        <p className="no-favorites">No favorite recipes yet.</p>
       ) : (
-        favorites.map((meal) => (
-          <div key={meal.idMeal} className="favorite-item">
-            <img src={meal.strMealThumb} alt={meal.strMeal} />
-            <h3>{meal.strMeal}</h3>
-            <button onClick={() => handleRemoveFavorite(meal.idMeal)}>
-              Remove from Favorites
-            </button>
-          </div>
-        ))
+        <div className="recipe-cards-container">
+          {favorites.map((meal) => (
+            <div key={meal.idMeal} className="recipe-card">
+              <img
+                src={meal.strMealThumb}
+                alt={meal.strMeal}
+                className="recipe-image"
+              />
+              <h3>{meal.strMeal}</h3>
+              <button
+                className="get-recipe-btn"
+                onClick={() => handleRemoveFavorite(meal.idMeal)}
+              >
+                Remove from Favorites
+              </button>
+            </div>
+          ))}
+        </div>
       )}
     </div>
   );
