@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
-import "./Tranding.css";
+import "./Trending.css";
 
-function Tranding() {
+function Trending() {
   const [recipes, setRecipes] = useState([]); // State to store recipes
   const [currentRecipeIndex, setCurrentRecipeIndex] = useState(0); // State to track the current recipe group
   const [selectedRecipe, setSelectedRecipe] = useState(null); // State to store the selected recipe details
@@ -51,7 +51,7 @@ function Tranding() {
   return (
     <div className="tranding">
       <div className="tranding__deco">
-        <h1 className="tranding__text">Tranding Recipes</h1>
+        <h1 className="tranding__text">Trending Recipes</h1>
         <span class="chef">
           <svg
             xmlns="http://www.w3.org/2000/svg"
@@ -125,4 +125,4 @@ function Tranding() {
   );
 }
 
-export default Tranding;
+export default Trending;
