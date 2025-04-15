@@ -4,7 +4,8 @@ import "./Diets.css";
 const diets = [
   {
     name: "Mediterranean",
-    image: "https://example.com/mediterranean.jpg",
+    image:
+      "https://i.pinimg.com/474x/36/b0/fc/36b0fcc20d1c90ce291be2d6a5217a8b.jpg",
     foods: `✅ Focuses on:
   - Whole grains, fruits, vegetables
   - Legumes, nuts, seeds
@@ -21,7 +22,8 @@ const diets = [
   },
   {
     name: "Keto",
-    image: "https://example.com/mediterranean.jpg",
+    image:
+      "https://i.pinimg.com/474x/ec/e5/bf/ece5bf521e1cb557c0f63b01df2c71a9.jpg",
     foods: `✅ Focuses on:
   - High fat, moderate protein, very low carbs
   - Puts your body in a state of ketosis (burns fat for fuel)
@@ -34,7 +36,8 @@ const diets = [
   },
   {
     name: "Vegan",
-    image: "https://example.com/mediterranean.jpg",
+    image:
+      "https://i.pinimg.com/474x/3a/b1/0e/3ab10e08a645350f0ddb674294d41ed3.jpg",
     foods: `✅ Focuses on:
   - 100% plant-based; excludes all animal products (meat, dairy, eggs, honey)
   - Often for ethical, environmental, or health reasons
@@ -47,7 +50,8 @@ const diets = [
   },
   {
     name: "Vegetarian",
-    image: "https://example.com/mediterranean.jpg",
+    image:
+      "https://i.pinimg.com/474x/10/5f/73/105f7303c5f3b338e24aabb0472cd76c.jpg",
     foods: `✅ Focuses on:
   - No meat or fish, but includes dairy and/or eggs (depending on type)
   - More flexible than veganism
@@ -60,7 +64,8 @@ const diets = [
   },
   {
     name: "Paleo",
-    image: "https://example.com/mediterranean.jpg",
+    image:
+      "https://i.pinimg.com/474x/78/23/7f/78237f708754ac4535acc56479470950.jpg",
     foods: `✅ Focuses on:
   - Foods that might have been eaten during the Paleolithic era
   - Includes meat, fish, fruits, vegetables, nuts, seeds
@@ -74,7 +79,8 @@ const diets = [
   },
   {
     name: "Low-Carb",
-    image: "https://example.com/mediterranean.jpg",
+    image:
+      "https://i.pinimg.com/474x/fb/de/a4/fbdea4157b1ce4fd7fdf12d0af09e449.jpg",
     foods: `✅ Focuses on:
     
   - Reducing carbohydrate intake, not necessarily as extreme as keto
@@ -105,6 +111,8 @@ function Diets() {
             onMouseEnter={() => setHovered(index)}
             onMouseLeave={() => setHovered(null)}
           >
+            {/* Render the image */}
+            <img src={diet.image} alt={diet.name} className="diet-image" />
             {hovered === index ? (
               <span className="description fade-up">{diet.foods}</span>
             ) : (
