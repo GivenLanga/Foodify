@@ -36,27 +36,76 @@ const SearchMeals = () => {
     setError(null);
 
     try {
-      // Fetch meals from API
-      const response = await fetch(
-        `https://www.themealdb.com/api/json/v1/1/filter.php?i=${query}`
-      );
-      const data = await response.json();
-      setMeals(data.meals || []);
+      const isRoot = window.location.pathname === "/";
+      let data = [];
+
+      if (isRoot) {
+        // Use Forkify
+        const response = await fetch(
+          `https://forkify-api.herokuapp.com/api/v2/recipes?search=${query}&key=f8a6a686-a18e-471a-9f7a-d6a7a2bb43eb`
+        );
+        const json = await response.json();
+
+        if (!json.data || !json.data.recipes) {
+          setError("No recipes found.");
+          return;
+        }
+
+        data = json.data.recipes.map((item) => ({
+          idMeal: item.id,
+          strMeal: item.title,
+          strMealThumb: item.image_url,
+          fromForkify: true, // Tag to indicate it's from Forkify
+        }));
+      } else {
+        // Use TheMealDB
+        const response = await fetch(
+          `https://www.themealdb.com/api/json/v1/1/filter.php?i=${query}`
+        );
+        const json = await response.json();
+
+        data = (json.meals || []).map((meal) => ({
+          ...meal,
+          fromForkify: false,
+        }));
+      }
+
+      setMeals(data);
     } catch (error) {
+      console.error("Error fetching meals:", error);
       setError("Error fetching meals. Please try again.");
     }
   };
 
-  const fetchMealRecipe = async (mealId) => {
+  const fetchMealRecipe = async (mealId, fromForkify = false) => {
     try {
-      // Fetch meal recipe details from API
-      const response = await fetch(
-        `https://www.themealdb.com/api/json/v1/1/lookup.php?i=${mealId}`
-      );
-      const data = await response.json();
-      setSelectedMeal(data.meals[0]);
+      let data;
+
+      if (fromForkify) {
+        const response = await fetch(
+          `https://forkify-api.herokuapp.com/api/v2/recipes/${mealId}?key=f8a6a686-a18e-471a-9f7a-d6a7a2bb43eb`
+        );
+        const json = await response.json();
+        const recipe = json.data.recipe;
+
+        data = {
+          strMeal: recipe.title,
+          strCategory: recipe.publisher,
+          strInstructions: recipe.instructions || "Instructions not provided.",
+          strMealThumb: recipe.image_url,
+          strYoutube: recipe.source_url,
+        };
+      } else {
+        const response = await fetch(
+          `https://www.themealdb.com/api/json/v1/1/lookup.php?i=${mealId}`
+        );
+        const json = await response.json();
+        data = json.meals[0];
+      }
+
+      setSelectedMeal(data);
     } catch (error) {
-      console.error("Error fetching recipes:", error);
+      console.error("Error fetching recipe:", error);
       setError("Failed to load recipes. Please try again later.");
     }
   };
@@ -121,7 +170,7 @@ const SearchMeals = () => {
                   className="recipe-btn"
                   onMouseEnter={() => setHoveredButton(meal.idMeal)} // Set hovered button ID
                   onMouseLeave={() => setHoveredButton(null)} // Reset hovered button ID
-                  onClick={() => fetchMealRecipe(meal.idMeal)}
+                  onClick={() => fetchMealRecipe(meal.idMeal, meal.fromForkify)}
                 >
                   {hoveredButton === meal.idMeal ? (
                     <RestaurantMenuIcon /> // Show icon when hovered
