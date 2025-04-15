@@ -23,7 +23,14 @@ function App() {
       <div className="App">
         <Routes>
           {/* Main content components */}
-          <Route path="/search" element={<SearchMeals />}></Route>
+          <Route
+            path="/search"
+            element={
+              <ErrorBoundary>
+                <SearchMeals />
+              </ErrorBoundary>
+            }
+          ></Route>
           <Route
             path="/"
             element={
@@ -40,7 +47,14 @@ function App() {
               </ErrorBoundary>
             }
           />
-          <Route path="/Favorites" element={<Favorites />} />
+          <Route
+            path="/Favorites"
+            element={
+              <ErrorBoundary>
+                <Favorites />
+              </ErrorBoundary>
+            }
+          />
         </Routes>
       </div>
     </Router>
