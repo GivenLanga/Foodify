@@ -1,9 +1,18 @@
 .slogan {
-  font-family: "ICA Rubrik";
-  font-size: 1em;
+  font-family: "ICA Rubrik", sans-serif;
+  font-size: clamp(1rem, 2vw, 1.5rem); /* Responsive font size */
   color: #000000;
-  position: relative;
-  bottom: 420px;
-  left: 40px;
-  z-index: 999999999999;
+  position: absolute; /* Usually better than relative for layout positioning */
+  bottom: 35vh; /* relative to viewport */
+  left: 1vw; /* a % works better across screen sizes */
+  z-index: 9999;
+}
+
+@media (max-width: 768px) {
+  .slogan {
+    bottom: 42vh;
+    left: 3vw;
+    font-size: clamp(0.9rem, 1vw, 1.5rem);
+    text-align: center;
+  }
 }

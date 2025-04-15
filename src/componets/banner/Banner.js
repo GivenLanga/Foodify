@@ -11,7 +11,7 @@ const Banner = () => {
 
         <div className="center-img"></div>
       </div>
-      <div className="card-container">
+      {/*   <div className="card-container">
         <a href="noreferrer" alt="Mythrill" target="_blank">
           <div className="card">
             <div className="wrapper">
@@ -80,7 +80,7 @@ const Banner = () => {
             />
           </div>
         </a>
-      </div>
+      </div> */}
     </div>
   );
 };

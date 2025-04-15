@@ -9,12 +9,17 @@
   --tenne-tawny: #000000;
   --tenne-tawny-dark: #5c5b5b;
 }
+
+/* Base Typography and Body Settings */
 body {
   font-weight: 300;
   font-size: 1.05rem;
   line-height: 1.6;
   font-family: "Poppins", sans-serif;
+  overflow-x: hidden; /* Prevent horizontal scrolling */
 }
+
+/* Navigation */
 nav {
   display: flex;
   justify-content: center;
@@ -23,6 +28,8 @@ nav {
   text-decoration: none;
   color: inherit;
 }
+
+/* Search Section */
 .search-box {
   flex: 1;
   display: flex;
@@ -32,7 +39,6 @@ nav {
 .home__icon {
   margin-right: 20px;
 }
-
 .input__search {
   flex: 1;
   max-width: 500px;
@@ -53,12 +59,11 @@ nav {
   background-color: inherit;
   cursor: pointer;
 }
-
 .search__icon:hover {
-  scale: 1.1;
+  transform: scale(1.1);
 }
 
-/*  */
+/* Buttons and Text */
 .btn {
   font-family: inherit;
   cursor: pointer;
@@ -73,10 +78,12 @@ nav {
   margin-bottom: 1rem;
 }
 
-/*  */
+/* Container */
 .container {
   min-height: 100vh;
 }
+
+/* Meal Section Wrapper */
 .meal-wrapper {
   max-width: 1280px;
   margin: 0 auto;
@@ -84,6 +91,8 @@ nav {
   background: #fff;
   text-align: center;
 }
+
+/* Meal Search */
 .meal-search {
   margin: 2rem 0;
 }
@@ -113,21 +122,23 @@ nav {
   color: var(--tenne-tawny);
 }
 
+/* Meal Result Heading */
 .meal-result {
   margin-top: 4rem;
 }
+
+/* Meal Grid - Using Flexibility with auto-fit/minmax */
 #meal {
   display: grid;
-  grid-template-columns: repeat(4, 1fr); /* Show 4 cards per row */
-  gap: 1rem; /* Reduced gap for better spacing */
-  margin: 2rem 0; /* Margin for spacing */
+  gap: 1rem;
+  margin: 2rem 0;
+  /* Automatically adjust number of columns based on screen width */
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
 }
+
+/* Individual Meal Item */
 .meal-item {
   border-radius: 1rem;
-  -webkit-border-radius: 1rem;
-  -moz-border-radius: 1rem;
-  -ms-border-radius: 1rem;
-  -o-border-radius: 1rem;
   overflow: hidden;
   box-shadow: 0 4px 21px -12px rgba(0, 0, 0, 0.79);
   margin: 2rem 0;
@@ -137,113 +148,96 @@ nav {
   display: block;
 }
 .meal-name {
-  padding: 0.8rem 0.5rem; /* Reduced padding */
+  padding: 0.8rem 0.5rem;
 }
 .meal-name h3 {
-  font-size: 1rem; /* Reduced font size */
+  font-size: 1rem;
 }
+
+/* Recipe Button */
 .recipe-btn {
   text-decoration: none;
   color: #fff;
   background: var(--tenne-tawny);
   font-weight: 500;
-  font-size: 0.9rem; /* Font size for text */
+  font-size: 0.9rem;
   padding: 0.5rem 0;
-  display: flex; /* Use flex to center the icon or text */
+  display: flex;
   justify-content: center;
   align-items: center;
   width: 120px;
-  height: 40px; /* Set a fixed height for the button */
+  height: 44px;
   margin: 0.6rem auto;
-  border-radius: 2rem;
+  border-radius: 0.5rem;
   transition: all 0.4s linear;
   cursor: pointer;
   position: relative;
 }
-
 .recipe-btn:hover {
   background: var(--tenne-tawny-dark);
 }
-
 .recipe-btn:hover::before,
 .recipe-btn:hover::after {
-  content: none; /* Ensure no pseudo-elements are displayed */
+  content: none;
 }
-
 .recipe-icon {
-  font-size: inherit; /* Inherit the font size of the button */
-  height: 100%; /* Ensure the icon fills the button height */
-  width: auto; /* Maintain aspect ratio */
+  font-size: inherit;
+  height: 100%;
+  width: auto;
   display: flex;
   align-items: center;
   justify-content: center;
 }
 
-/* meal details */
+/* Meal Details Modal */
 .meal-details {
   position: fixed;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  -webkit-transform: translate(-50%, -50%);
-  -moz-transform: translate(-50%, -50%);
-  -ms-transform: translate(-50%, -50%);
-  -o-transform: translate(-50%, -50%);
   color: #fff;
   background: var(--tenne-tawny);
   border-radius: 1rem;
-  -webkit-border-radius: 1rem;
-  -moz-border-radius: 1rem;
-  -ms-border-radius: 1rem;
-  -o-border-radius: 1rem;
   width: 80%;
   height: 80%;
   overflow-y: scroll;
   display: none;
   padding: 2rem 0;
 }
-
 .meal-details::-webkit-scrollbar {
   width: 10px;
 }
 .meal-details::-webkit-scrollbar-thumb {
   background: #f0f0f0;
   border-radius: 2rem;
-  -webkit-border-radius: 2rem;
-  -moz-border-radius: 2rem;
-  -ms-border-radius: 2rem;
-  -o-border-radius: 2rem;
 }
 
-/* js related */
+/* Show Recipe Modal (JS controlled) */
 .showRecipe {
   display: block;
 }
-
 .meal-details-content {
   margin: 2rem;
 }
 .meal-details-content p:not(.recipe-category) {
   padding: 1rem 0;
 }
-.recipe-close-btn {
+#recipe-close-btn {
   position: absolute;
-  right: 2rem;
-  top: 2rem;
   font-size: 1.8rem;
   background: #fff;
   border: none;
   width: 35px;
   height: 35px;
   border-radius: 50%;
-  -webkit-border-radius: 50%;
-  -moz-border-radius: 50%;
-  -ms-border-radius: 50%;
-  -o-border-radius: 50%;
   display: flex;
   align-items: center;
   justify-content: center;
   opacity: 0.9;
+  cursor: pointer;
+  /* Positioned relative to modal — adjust as needed */
+  bottom: 2rem;
+  right: 2rem;
 }
 .recipe-title {
   letter-spacing: 1px;
@@ -256,22 +250,6 @@ nav {
   display: inline-block;
   padding: 0.2rem 0.5rem;
   border-radius: 0.3rem;
-  -webkit-border-radius: 0.3rem;
-  -moz-border-radius: 0.3rem;
-  -ms-border-radius: 0.3rem;
-  -o-border-radius: 0.3rem;
-}
-.recipe-category {
-  background: #fff;
-  font-weight: 600;
-  color: var(--tenne-tawny);
-  display: inline-block;
-  padding: 0.2rem 0.5rem;
-  border-radius: 0.3rem;
-  -webkit-border-radius: 0.3rem;
-  -moz-border-radius: 0.3rem;
-  -ms-border-radius: 0.3rem;
-  -o-border-radius: 0.3rem;
 }
 .recipe-instruct {
   padding: 1rem 0;
@@ -280,10 +258,6 @@ nav {
   width: 100px;
   height: 100px;
   border-radius: 50%;
-  -webkit-border-radius: 50%;
-  -moz-border-radius: 50%;
-  -ms-border-radius: 50%;
-  -o-border-radius: 50%;
   margin: 0 auto;
   display: block;
 }
@@ -295,16 +269,12 @@ nav {
   font-size: 1.2rem;
   font-weight: 700;
   transition: all 0.4s linear;
-  -webkit-transition: all 0.4s linear;
-  -moz-transition: all 0.4s linear;
-  -ms-transition: all 0.4s linear;
-  -o-transition: all 0.4s linear;
 }
 .recipe-link a:hover {
   opacity: 0.8;
 }
 
-/*  */
+/* Not Found Message */
 .notFound {
   grid-template-columns: 1fr !important;
   color: var(--tenne-tawny);
@@ -312,156 +282,99 @@ nav {
   font-weight: 600;
   width: 100%;
 }
+
+/* Meal Buttons */
 .meal__btns {
   display: flex;
   justify-content: center;
   align-items: center;
 }
 .favorites-btn {
-  margin-left: 200px;
+  margin-left: 50px;
   height: 45px;
   width: 150px;
   background-color: black;
   color: white;
   border-radius: 1em;
 }
-
 .hidden {
   display: none;
 }
-
 .remove-btn {
   background-color: #000000;
   color: white;
   border: none;
+  height: fit-content;
   border-radius: 5px;
   padding: 5px 10px;
   cursor: pointer;
   transition: background-color 0.3s ease;
 }
 
-/* Media Queries */
+/* Additional Responsive Adjustments */
+
+/* For medium devices and up */
 @media screen and (min-width: 600px) {
   .meal-search-box {
     width: 540px;
-    margin-left: auto;
-    margin-right: auto;
+    margin: 0 auto;
   }
 }
 
+/* For larger tablets */
 @media screen and (min-width: 768px) {
-  #meal {
-    grid-template-columns: repeat(2, 1fr);
-    gap: 2rem;
-  }
-  .meal-item {
-    margin: 0;
-  }
   .meal-details {
     width: 700px;
   }
 }
 
-@media screen and (min-width: 992px) {
-  #meal {
-    grid-template-columns: repeat(3, 1fr);
-  }
-}
-
+/* Optional: Adjust meal-card style for smaller screens */
 .meal-container {
   display: flex;
   justify-content: center;
   flex-wrap: wrap;
-  gap: 15px; /* Reduced gap between meal cards */
-  margin: 2rem 0; /* Slightly reduced margin */
+  gap: 15px;
+  margin: 2rem 0;
 }
 
 .meal-card {
-  border: 1px solid #e6e6e6; /* Card border */
-  padding: 8px; /* Reduced padding inside the card */
-  border-radius: 8px; /* Rounded corners */
-  width: 100%; /* Allow cards to adjust width based on grid */
-  text-align: center; /* Center-align text */
-  box-shadow: 5px 5px 15px rgb(113, 113, 113), -5px -5px 15px rgb(197, 195, 195); /* Adjusted shadow for smaller cards */
-  transition: transform 0.3s; /* Smooth hover effect */
-  overflow: hidden; /* Prevent overflow */
+  border: 1px solid #e6e6e6;
+  padding: 8px;
+  border-radius: 8px;
+  width: 100%;
+  text-align: center;
+  box-shadow: 5px 5px 15px rgb(113, 113, 113), -5px -5px 15px rgb(197, 195, 195);
+  transition: transform 0.3s;
+  overflow: hidden;
 }
-
 .meal-card:hover {
-  transform: scale(1.05); /* Slight zoom effect on hover */
+  transform: scale(1.05);
 }
-
 .meal-img img {
-  width: 100%; /* Ensure the image takes up the full width of the card */
-  height: 250px; /* Set a fixed height for images */
-  object-fit: cover; /* Ensure images are cropped proportionally */
-  display: block; /* Prevent inline spacing issues */
-  border-radius: 8px; /* Match the card's border radius */
+  width: 100%;
+  height: 250px;
+  object-fit: cover;
+  display: block;
+  border-radius: 8px;
 }
-
 .meal-name {
-  padding: 0.8rem 0.5rem; /* Reduced padding */
+  padding: 0.8rem 0.5rem;
 }
-
 .meal-name h3 {
-  font-size: 1rem; /* Reduced font size */
+  font-size: 1rem;
 }
 
+/* Button responsive sizing with clamp */
 .recipe-btn {
-  text-decoration: none;
-  color: #fff;
-  background: var(--tenne-tawny);
-  font-weight: 500;
-  font-size: 0.9rem; /* Font size for text */
-  padding: 0.5rem 0;
-  display: flex; /* Use flex to center the icon or text */
-  justify-content: center;
-  align-items: center;
-  width: 120px;
-  height: 40px; /* Set a fixed height for the button */
-  margin: 0.6rem auto;
-  border-radius: 2rem;
-  transition: all 0.4s linear;
-  cursor: pointer;
-  position: relative;
+  font-size: clamp(0.8rem, 2.5vw, 0.9rem);
 }
 
-.recipe-btn:hover {
-  background: var(--tenne-tawny-dark);
-}
-
-.recipe-btn:hover::before,
-.recipe-btn:hover::after {
-  content: none; /* Ensure no pseudo-elements are displayed */
-}
-
-.recipe-icon {
-  font-size: inherit; /* Inherit the font size of the button */
-  height: 100%; /* Ensure the icon fills the button height */
-  width: auto; /* Maintain aspect ratio */
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-/* Responsive Adjustments */
-@media screen and (max-width: 1200px) {
-  #meal {
-    grid-template-columns: repeat(3, 1fr); /* Keep 4 cards per row on laptops */
-  }
-}
-
-@media screen and (max-width: 768px) {
-  #meal {
-    grid-template-columns: repeat(
-      2,
-      1fr
-    ); /* Show 2 cards per row on small screens */
-  }
-}
-
+/* Additional media query for very small screens */
 @media screen and (max-width: 480px) {
   #meal {
-    grid-template-columns: 1fr; /* Show 1 card per row on very small screens */
+    grid-template-columns: 1fr; /* Single column on very small screens */
+  }
+  .favorites-btn {
+    margin-left: 0;
   }
 }

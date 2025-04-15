@@ -172,7 +172,7 @@ const SearchMeals = () => {
               </a>
             </div>
             <button id="recipe-close-btn" onClick={() => setSelectedMeal(null)}>
-              Close
+              X
             </button>
           </div>
         </div>
