@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { Link, useLocation } from "react-router-dom"; // Import useLocation to read query parameters
+import { Link, useLocation } from "react-router-dom";
 import FavoriteBorderIcon from "@mui/icons-material/FavoriteBorder";
 import { useDispatch, useSelector } from "react-redux";
 import {
@@ -7,101 +7,93 @@ import {
   removeFavorite,
 } from "../../../redux/slices/favoritesSlice";
 import SearchIcon from "@mui/icons-material/Search";
-import RestaurantMenuIcon from "@mui/icons-material/RestaurantMenu"; // Import Material-UI icon
-import HomeIcon from "@mui/icons-material/Home"; // Import Home icon from Material-UI
+import RestaurantMenuIcon from "@mui/icons-material/RestaurantMenu";
+import HomeIcon from "@mui/icons-material/Home";
 import "./searchmeal.css";
 
 const Search = () => {
-  const [query, setQuery] = useState(""); // State for search query
-  const [meals, setMeals] = useState([]); // State for meals list
-  const [selectedMeal, setSelectedMeal] = useState(null); // State for selected meal details
-  const [error, setError] = useState(null); // State for error messages
-  const [hoveredButton, setHoveredButton] = useState(null); // State to track hovered button
-  const dispatch = useDispatch(); // Redux dispatch
-  const favorites = useSelector((state) => state.favorites); // Get favorites from Redux
-  const location = useLocation(); // Get the current location
+  const [query, setQuery] = useState("");
+  const [meals, setMeals] = useState([]);
+  const [selectedMeal, setSelectedMeal] = useState(null);
+  const [error, setError] = useState(null);
+  const [hoveredButton, setHoveredButton] = useState(null);
+  const dispatch = useDispatch();
+  const favorites = useSelector((state) => state.favorites);
+  const location = useLocation();
 
   useEffect(() => {
-    // Get query parameters from URL
     const urlParams = new URLSearchParams(location.search);
     const searchQuery = urlParams.get("query");
     const dietQuery = urlParams.get("diet");
 
-    if (searchQuery) {
-      setQuery(searchQuery);
-      fetchMealList(searchQuery); // Fetch meals based on query
-    } else if (dietQuery) {
-      fetchMealsByDiet(dietQuery); // Fetch meals based on diet
+    if (searchQuery || dietQuery) {
+      fetchCombinedMeals(searchQuery, dietQuery);
     }
   }, [location.search]);
 
-  const fetchMealList = async (query) => {
-    if (!query) return;
+  const fetchCombinedMeals = async (query, diet) => {
     setMeals([]);
     setError(null);
 
     try {
-      const isRoot = window.location.pathname === "/";
-      let data = [];
+      const forkifyAPI = query
+        ? fetch(
+            `https://forkify-api.herokuapp.com/api/v2/recipes?search=${query}&key=f8a6a686-a18e-471a-9f7a-d6a7a2bb43eb`
+          ).then((res) => res.json())
+        : Promise.resolve({ data: { recipes: [] } });
 
-      if (isRoot) {
-        // Use Forkify
-        const response = await fetch(
-          `https://forkify-api.herokuapp.com/api/v2/recipes?search=${query}&key=f8a6a686-a18e-471a-9f7a-d6a7a2bb43eb`
-        );
-        const json = await response.json();
+      const mealDBAPI = query
+        ? fetch(
+            `https://www.themealdb.com/api/json/v1/1/filter.php?i=${query}`
+          ).then((res) => res.json())
+        : Promise.resolve({ meals: [] });
 
-        if (!json.data || !json.data.recipes) {
-          setError("No recipes found.");
-          return;
-        }
+      const spoonacularAPI = diet
+        ? fetch(
+            `https://api.spoonacular.com/recipes/complexSearch?diet=${diet}&apiKey=96f1badc1c3a4eb980fd9e4663ccfbf8`
+          ).then((res) => res.json())
+        : Promise.resolve({ results: [] });
 
-        data = json.data.recipes.map((item) => ({
-          idMeal: item.id,
-          strMeal: item.title,
-          strMealThumb: item.image_url,
-          fromForkify: true, // Tag to indicate it's from Forkify
-        }));
-      } else {
-        // Use TheMealDB
-        const response = await fetch(
-          `https://www.themealdb.com/api/json/v1/1/filter.php?i=${query}`
-        );
-        const json = await response.json();
+      const [forkifyData, mealDBData, spoonacularData] = await Promise.all([
+        forkifyAPI,
+        mealDBAPI,
+        spoonacularAPI,
+      ]);
 
-        data = (json.meals || []).map((meal) => ({
-          ...meal,
-          fromForkify: false,
-        }));
-      }
+      const forkifyMeals = (forkifyData.data.recipes || []).map((item) => ({
+        idMeal: item.id,
+        strMeal: item.title,
+        strMealThumb: item.image_url,
+        fromForkify: true,
+      }));
 
-      setMeals(data);
-    } catch (error) {
-      console.error("Error fetching meals:", error);
-      setError("Error fetching meals. Please try again.");
-    }
-  };
+      const mealDBMeals = (mealDBData.meals || []).map((meal) => ({
+        idMeal: meal.idMeal,
+        strMeal: meal.strMeal,
+        strMealThumb: meal.strMealThumb,
+        fromForkify: false,
+      }));
 
-  const fetchMealsByDiet = async (diet) => {
-    setMeals([]);
-    setError(null);
-
-    try {
-      const response = await fetch(
-        `https://api.spoonacular.com/recipes/complexSearch?diet=${diet}&apiKey=96f1badc1c3a4eb980fd9e4663ccfbf8`
-      );
-      const json = await response.json();
-
-      const data = (json.results || []).map((meal) => ({
+      const spoonacularMeals = (spoonacularData.results || []).map((meal) => ({
         idMeal: meal.id,
         strMeal: meal.title,
         strMealThumb: meal.image,
         fromForkify: false,
       }));
 
-      setMeals(data);
+      const combinedMeals = [
+        ...forkifyMeals,
+        ...mealDBMeals,
+        ...spoonacularMeals,
+      ];
+
+      if (combinedMeals.length === 0) {
+        setError("No recipes found.");
+      }
+
+      setMeals(combinedMeals);
     } catch (error) {
-      console.error("Error fetching meals by diet:", error);
+      console.error("Error fetching meals:", error);
       setError("Error fetching meals. Please try again.");
     }
   };
@@ -140,20 +132,19 @@ const Search = () => {
   };
 
   const handleAddToFavorites = (meal) => {
-    dispatch(addFavorite(meal)); // Dispatch the addFavorite action
+    dispatch(addFavorite(meal));
   };
 
   const handleRemoveFromFavorites = (meal) => {
-    dispatch(removeFavorite(meal)); // Dispatch the removeFavorite action
+    dispatch(removeFavorite(meal));
   };
 
   const isFavorite = (mealId) => {
-    return favorites.some((meal) => meal.idMeal === mealId); // Check if the meal is in favorites
+    return favorites.some((meal) => meal.idMeal === mealId);
   };
 
   return (
     <div>
-      {/* Search box */}
       <nav>
         <div className="search-box">
           <Link className="nav__link" to={"/"}>
@@ -167,7 +158,10 @@ const Search = () => {
             onChange={(e) => setQuery(e.target.value)}
             placeholder="Search for recipes..."
           />
-          <button id="search-btn" onClick={() => fetchMealList(query)}>
+          <button
+            id="search-btn"
+            onClick={() => fetchCombinedMeals(query, null)}
+          >
             <SearchIcon className="search__icon" />
           </button>
 
@@ -177,7 +171,6 @@ const Search = () => {
         </div>
       </nav>
 
-      {/* Meals list */}
       <div id="meal" className="meal-container">
         {meals.length === 0 && !error && (
           <p className="loading">Loading meals...</p>
@@ -197,14 +190,14 @@ const Search = () => {
               <div className="meal__btns">
                 <button
                   className="recipe-btn"
-                  onMouseEnter={() => setHoveredButton(meal.idMeal)} // Set hovered button ID
-                  onMouseLeave={() => setHoveredButton(null)} // Reset hovered button ID
+                  onMouseEnter={() => setHoveredButton(meal.idMeal)}
+                  onMouseLeave={() => setHoveredButton(null)}
                   onClick={() => fetchMealRecipe(meal.idMeal, meal.fromForkify)}
                 >
                   {hoveredButton === meal.idMeal ? (
-                    <RestaurantMenuIcon /> // Show icon when hovered
+                    <RestaurantMenuIcon />
                   ) : (
-                    "Get Recipe" // Show text when not hovered
+                    "Get Recipe"
                   )}
                 </button>
                 {isFavorite(meal.idMeal) ? (
@@ -228,7 +221,6 @@ const Search = () => {
         ))}
       </div>
 
-      {/* Selected meal details */}
       {selectedMeal && (
         <div className="meal-details showRecipe">
           <div className="meal-details-content">
