@@ -75,7 +75,7 @@
   color: #fff;
   background-color: #000000; /* Button color */
   border: none;
-  border-radius: 20px; /* Reduced border radius */
+  border-radius: 5px; /* Reduced border radius */
   cursor: pointer;
   text-align: center;
   transition: background-color 0.2s ease;

@@ -1,8 +1,8 @@
-.tranding {
+.trending {
   position: relative;
   text-align: center;
 }
-.tranding__deco {
+.trending__deco {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -20,7 +20,7 @@
   margin-bottom: 40px;
   padding-left: 10px;
 }
-.tranding__text {
+.trending__text {
   font-family: "ICA Rubrik";
   bottom: 20px;
   text-align: center;
@@ -83,6 +83,30 @@
 
 .get-recipe-btn:hover {
   background-color: #3f4040;
+}
+
+.remove-favorite-btn {
+  margin-left: 20px;
+  padding: 10px 10px;
+  background-color: #f50000;
+  color: white;
+  width: fit-content;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.add-favorite-btn {
+  margin-left: 20px;
+  padding: 10px 10px;
+  background-color: #000000;
+  color: white;
+  width: fit-content;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
 }
 
 .recipe-details {
