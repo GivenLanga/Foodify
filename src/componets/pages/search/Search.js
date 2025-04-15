@@ -56,7 +56,8 @@ const SearchMeals = () => {
       const data = await response.json();
       setSelectedMeal(data.meals[0]);
     } catch (error) {
-      setError("Error fetching recipe details.");
+      console.error("Error fetching recipes:", error);
+      setError("Failed to load recipes. Please try again later.");
     }
   };
 

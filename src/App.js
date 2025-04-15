@@ -1,4 +1,5 @@
 import React from "react";
+import ErrorBoundary from "./ErrorBoundary";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import Navbar from "./componets/navbar/Navbar";
 import Favorites from "./componets/pages/favorites/Favorites";
@@ -9,6 +10,7 @@ import Footer from "./componets/footer/Footer";
 import Trending from "./componets/Trending/Trending";
 import SearchMeals from "./componets/pages/search/Search";
 import Diets from "./componets/Diets/Diets";
+
 /*
 
 ";
@@ -25,15 +27,17 @@ function App() {
           <Route
             path="/"
             element={
-              <>
-                <Navbar />
-                <Banner />
-                <Slogan />
-                <Trending />
-                <Diets />
-                <Review />
-                <Footer />
-              </>
+              <ErrorBoundary>
+                <>
+                  <Navbar />
+                  <Banner />
+                  <Slogan />
+                  <Trending />
+                  <Diets />
+                  <Review />
+                  <Footer />
+                </>
+              </ErrorBoundary>
             }
           />
           <Route path="/Favorites" element={<Favorites />} />
