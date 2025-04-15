@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom"; // Import useLocation to read query parameters
 import FavoriteBorderIcon from "@mui/icons-material/FavoriteBorder";
 import { useDispatch, useSelector } from "react-redux";
 import {
@@ -11,7 +11,7 @@ import RestaurantMenuIcon from "@mui/icons-material/RestaurantMenu"; // Import M
 import HomeIcon from "@mui/icons-material/Home"; // Import Home icon from Material-UI
 import "./searchmeal.css";
 
-const SearchMeals = () => {
+const Search = () => {
   const [query, setQuery] = useState(""); // State for search query
   const [meals, setMeals] = useState([]); // State for meals list
   const [selectedMeal, setSelectedMeal] = useState(null); // State for selected meal details
@@ -19,16 +19,21 @@ const SearchMeals = () => {
   const [hoveredButton, setHoveredButton] = useState(null); // State to track hovered button
   const dispatch = useDispatch(); // Redux dispatch
   const favorites = useSelector((state) => state.favorites); // Get favorites from Redux
+  const location = useLocation(); // Get the current location
 
   useEffect(() => {
-    // Get query parameter from URL
-    const urlParams = new URLSearchParams(window.location.search);
+    // Get query parameters from URL
+    const urlParams = new URLSearchParams(location.search);
     const searchQuery = urlParams.get("query");
+    const dietQuery = urlParams.get("diet");
+
     if (searchQuery) {
       setQuery(searchQuery);
       fetchMealList(searchQuery); // Fetch meals based on query
+    } else if (dietQuery) {
+      fetchMealsByDiet(dietQuery); // Fetch meals based on diet
     }
-  }, []);
+  }, [location.search]);
 
   const fetchMealList = async (query) => {
     if (!query) return;
@@ -73,6 +78,30 @@ const SearchMeals = () => {
       setMeals(data);
     } catch (error) {
       console.error("Error fetching meals:", error);
+      setError("Error fetching meals. Please try again.");
+    }
+  };
+
+  const fetchMealsByDiet = async (diet) => {
+    setMeals([]);
+    setError(null);
+
+    try {
+      const response = await fetch(
+        `https://api.spoonacular.com/recipes/complexSearch?diet=${diet}&apiKey=96f1badc1c3a4eb980fd9e4663ccfbf8`
+      );
+      const json = await response.json();
+
+      const data = (json.results || []).map((meal) => ({
+        idMeal: meal.id,
+        strMeal: meal.title,
+        strMealThumb: meal.image,
+        fromForkify: false,
+      }));
+
+      setMeals(data);
+    } catch (error) {
+      console.error("Error fetching meals by diet:", error);
       setError("Error fetching meals. Please try again.");
     }
   };
@@ -231,4 +260,4 @@ const SearchMeals = () => {
   );
 };
 
-export default SearchMeals;
+export default Search;

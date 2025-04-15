@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { useNavigate } from "react-router-dom"; // Import useNavigate for navigation
 import "./Diets.css";
 
 const diets = [
@@ -96,6 +97,12 @@ const diets = [
 
 function Diets() {
   const [hovered, setHovered] = useState(null);
+  const navigate = useNavigate(); // Initialize useNavigate
+
+  const handleDietClick = (dietName) => {
+    // Navigate to the search page with the diet as a query parameter
+    navigate(`/search?diet=${dietName}`);
+  };
 
   return (
     <div className="diets">
@@ -110,6 +117,7 @@ function Diets() {
             key={index}
             onMouseEnter={() => setHovered(index)}
             onMouseLeave={() => setHovered(null)}
+            onClick={() => handleDietClick(diet.name)}
           >
             {/* Render the image */}
             <img src={diet.image} alt={diet.name} className="diet-image" />
