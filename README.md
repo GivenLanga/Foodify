@@ -74,7 +74,11 @@ Foodify integrates three powerful APIs to provide a comprehensive recipe search 
 - **Diet Component**:
   - Uses Spoonacular to fetch recipes based on dietary preferences.
 - **Get Recipe Button**:
+
   - Fetches detailed recipe information from TheMealDB or Forkify, depending on the source.
+
+- **Trending Component**:
+  - Uses the Forkify to to pull recipes and change then after every 5 seconds
 
 ### Benefits of Using Multiple APIs
 
@@ -120,7 +124,7 @@ foodify/
 
 1. Clone the repository:
    ```bash
-   git clone https://github.com/your-username/foodify.git
+   git clone https://github.com/GivenLanga/foodify.git
    ```
 2. Navigate to the project directory:
    ```bash
@@ -152,3 +156,13 @@ This project is licensed under the [MIT License](LICENSE).
 ## 📧 Contact
 
 For any inquiries, please contact [langamind@gmail.com].
+
+---
+
+## 🐞 Known Issues
+
+- **API Rate Limits**: Spoonacular API has a limited free-tier quota, which may cause errors if the limit is exceeded.
+- **Foreign Language Ingredients**: Some ingredients from TheMealDB API are listed in foreign languages, which may confuse users.
+- **Recipe Instructions Missing**: Forkify API does not provide recipe instructions, requiring users to visit the source website for details.
+- **Search Inconsistencies**: Combining results from multiple APIs may occasionally lead to duplicate or irrelevant recipes.
+- **Mobile Responsiveness**: While the design is responsive, some components may require further optimization for smaller screens.

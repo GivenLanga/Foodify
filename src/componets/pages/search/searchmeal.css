@@ -295,19 +295,21 @@ nav {
   width: 150px;
   background-color: black;
   color: white;
-  border-radius: 1em;
+  border-radius: 5px;
 }
 .hidden {
   display: none;
 }
 .remove-btn {
-  background-color: #000000;
+  margin-left: 50px;
+  background-color: #fe0000;
   color: white;
   border: none;
   height: fit-content;
-  border-radius: 5px;
-  padding: 5px 10px;
+  height: 45px;
+  width: 150px;
   cursor: pointer;
+  border-radius: 5px;
   transition: background-color 0.3s ease;
 }
 
