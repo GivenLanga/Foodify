@@ -202,7 +202,7 @@ const Search = () => {
                 </button>
                 {isFavorite(meal.idMeal) ? (
                   <button
-                    className="favorites-btn remove-btn"
+                    className=" remove-btn"
                     onClick={() => handleRemoveFromFavorites(meal)}
                   >
                     Remove from Favorites
